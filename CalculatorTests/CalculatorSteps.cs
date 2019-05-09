@@ -1,6 +1,7 @@
 ﻿namespace CalculatorTests
 {
     using Calc;
+    using NUnit.Framework;
     using TechTalk.SpecFlow;
 
     [Binding]
@@ -10,28 +11,49 @@
 
         private Calculator calculator = new Calculator();
 
+        public int Result { get => result; set => result = value; }
+
         [Given(@"I have entered (.*) into the calculator")]
         public void GivenIHaveEnteredIntoTheCalculator(int firstNumber)
         {
-            ScenarioContext.Current.Pending();
+            calculator.FirstNumber = firstNumber;
         }
 
         [Given(@"I have also entered (.*) into the calculator")]
         public void GivenIHaveAlsoEnteredIntoTheCalculator(int secondNumber)
         {
-            ScenarioContext.Current.Pending();
+            calculator.SecondNumber = secondNumber;
         }
 
         [When(@"I press add")]
         public void WhenIPressAdd()
         {
-            ScenarioContext.Current.Pending();
+            result = calculator.Add();
         }
-        
+
+        [When(@"I press subtract")]
+        public void WhenIPressSubtract()
+        {
+            result = calculator.Subtract();
+        }
+
+        [When(@"I press divide")]
+        public void WhenIPressDivide()
+        {
+            result = calculator.Divide();
+        }
+
+        [When(@"I press multiply")]
+        public void WhenIPressMultiply()
+        {
+            result = calculator.Multiply();
+        }
+
         [Then(@"the result should be (.*) on the screen")]
         public void ThenTheResultShouldBeOnTheScreen(int expectedResult)
         {
-            ScenarioContext.Current.Pending();
+            Assert.AreEqual(expectedResult, Result);
         }
+
     }
 }

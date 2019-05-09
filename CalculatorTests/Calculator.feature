@@ -11,7 +11,31 @@
 
 @calculator
 Scenario: Add two numbers
-	Given I have entered 50 into the calculator
-	And I have also entered 70 into the calculator
+	Given I have entered 5 into the calculator
+	And I have also entered -5 into the calculator
 	When I press add
-	Then the result should be 120 on the screen
+	Then the result should be 0 on the screen
+
+Scenario: subtract two numbers
+	Given I have entered 5 into the calculator
+	And I have also entered 5 into the calculator
+	When I press subtract
+	Then the result should be 0 on the screen
+
+Scenario: multiply two numbers
+	Given I have entered -5 into the calculator
+	And I have also entered -5 into the calculator
+	When I press multiply
+	Then the result should be 25 on the screen
+
+Scenario: divide two numbers
+	Given I have entered 5 into the calculator
+	And I have also entered -5 into the calculator
+	When I press divide
+	Then the result should be -1 on the screen
+
+#Scenario: add two positive numbers
+#	Given I have entered 5 into the calculator
+#	And I have also entered 5 into the calculator
+#	When I press add
+#	Then the result should be >0 on the screen
